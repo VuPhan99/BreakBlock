@@ -22,7 +22,7 @@ public class MyView extends View implements Runnable {
     private Bitmap gameover;
 
     private int x1 = 500, y1 = 500, dx1 = 5, dy1 = 5;
-    private int x2 = 150, y2 = 150, dx2 = 20, dy2 = 20;
+    private int x2 = 500, y2 = 500, dx2 = 10, dy2 = 10;
 
     private int x3 = 400 - getWidth(), y3 = 1480 - getHeight();
 
@@ -43,7 +43,7 @@ public class MyView extends View implements Runnable {
         gameover = BitmapFactory.decodeResource( getResources(), R.drawable.game_over );
 
         ball = BitmapFactory.decodeResource( getResources(), R.drawable.ball );
-        ballResize = Bitmap.createScaledBitmap( ball, 50, 80, false );
+        ballResize = Bitmap.createScaledBitmap( ball, 50, 50, false );
 
         lists = new ArrayList<Brick>();
 
@@ -112,10 +112,10 @@ public class MyView extends View implements Runnable {
 
         paint.setColor( Color.parseColor( "#CD5C5C" ) );
 
-        canvas.drawCircle( x1, y1, 20, paint );
+       /* canvas.drawCircle( x1, y1, 20, paint );
+*/
 
-
-        /*canvas.drawBitmap( ballResize, x2, y2, null );*/
+        canvas.drawBitmap( ballResize, x2, y2, null );
 
         canvas.drawBitmap( thanhngangsize, x3, y3, null );
 
@@ -125,10 +125,10 @@ public class MyView extends View implements Runnable {
         paint2.setTextSize( 120 );
         canvas.drawText( String.valueOf( point ), 480, 590, paint2 );
 
-        if (y1 > y3 + 40) {
-            if (x1 > x3 - 20 && x1 < x3 + 250) {
+        if (y2 > y3 + 30) {
+            if (x2 > x3 - 20 && x2 < x3 + 250) {
                 soundManager.playSound( R.raw.sound2 );
-                dy1 = -dy1;
+                dy2 = -dy2;
             } else {
                 canvas.drawText( "Scores ", 385, 430, paint2 );
                 canvas.drawBitmap( gameover, 220, 600, null );
@@ -145,12 +145,12 @@ public class MyView extends View implements Runnable {
                 //kiểm tra ball va chạm với gạch
                 // viên nào bể thì set visible = false
 
-                if (y1 < element.getY()) {
-                    if (x1 > element.getX() && x1 < (element.getX() + element.getWidth() /*+ element.getHeight()*/)) {
+                if (y2 < element.getY()) {
+                    if (x2 > element.getX() && x2 < (element.getX() + element.getWidth() /*+ element.getHeight()*/)) {
                         element.setInVisible();
                         soundManager.playSound( R.raw.sound1 );
                         point += 10;
-                        dy1 = -dy1;
+                        dy2 = -dy2;
 
                     }
                 }
