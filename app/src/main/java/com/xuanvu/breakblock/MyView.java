@@ -1,7 +1,6 @@
 package com.xuanvu.breakblock;
 
 import android.content.Context;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -12,10 +11,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-
 import java.util.ArrayList;
 
-public class MyView extends View implements Runnable  {
+public class MyView extends View implements Runnable {
     private Bitmap ball;
     private Bitmap ballResize;
 
@@ -50,11 +48,11 @@ public class MyView extends View implements Runnable  {
         lists = new ArrayList<Brick>();
 
         for (int i = 0; i < 9; i++) {
-            Brick brick = new Brick(110 * i + 50, 10, 105, 70 );
-            Brick brick2 = new Brick(110 * i + 50, 85, 105, 70);
-            Brick brick3 = new Brick(110 * i + 50, 160, 105, 70);
-            Brick brick4 = new Brick(110 * i + 50, 235, 105, 70);
-            Brick brick5 = new Brick(110 * i + 50, 310, 105, 70);
+            Brick brick = new Brick( 110 * i + 50, 10, 105, 70 );
+            Brick brick2 = new Brick( 110 * i + 50, 85, 105, 70 );
+            Brick brick3 = new Brick( 110 * i + 50, 160, 105, 70 );
+            Brick brick4 = new Brick( 110 * i + 50, 235, 105, 70 );
+            Brick brick5 = new Brick( 110 * i + 50, 310, 105, 70 );
             /*Brick brick6 = new Brick(110 * i + 50, 385, 105, 70);*/
 
             lists.add( brick );
@@ -62,7 +60,7 @@ public class MyView extends View implements Runnable  {
             lists.add( brick3 );
             lists.add( brick4 );
             lists.add( brick5 );
-           /* lists.add( brick6 );*/
+            /* lists.add( brick6 );*/
         }
            /* for (int j = 0; j < 4; j++) {
                 Brick brick4 = new Brick(110 * j + 50, 235, 105, 70);
@@ -124,16 +122,15 @@ public class MyView extends View implements Runnable  {
 
         Paint paint2 = new Paint();
         paint2.setColor( Color.GREEN );
-        paint2.setTextSize(120);
-        canvas.drawText( String.valueOf( point ), 480,590,paint2 );
+        paint2.setTextSize( 120 );
+        canvas.drawText( String.valueOf( point ), 480, 590, paint2 );
 
-        if (y1 > y3 + 40 ) {
-            if (x1 > x3 - 20 && x1 < x3 + 250){
+        if (y1 > y3 + 40) {
+            if (x1 > x3 - 20 && x1 < x3 + 250) {
                 soundManager.playSound( R.raw.sound2 );
                 dy1 = -dy1;
-            }
-            else {
-                canvas.drawText( "Scores ",385, 430,paint2 );
+            } else {
+                canvas.drawText( "Scores ", 385, 430, paint2 );
                 canvas.drawBitmap( gameover, 220, 600, null );
                 /*soundManager.playSound( R.raw.gameover );*/
                 return;
@@ -148,8 +145,8 @@ public class MyView extends View implements Runnable  {
                 //kiểm tra ball va chạm với gạch
                 // viên nào bể thì set visible = false
 
-                if (y1 < element.getY()){
-                    if (x1 > element.getX()&& x1 < (element.getX() + element.getWidth() /*+ element.getHeight()*/) ){
+                if (y1 < element.getY()) {
+                    if (x1 > element.getX() && x1 < (element.getX() + element.getWidth() /*+ element.getHeight()*/)) {
                         element.setInVisible();
                         soundManager.playSound( R.raw.sound1 );
                         point += 10;
