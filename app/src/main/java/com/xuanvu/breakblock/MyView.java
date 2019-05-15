@@ -20,6 +20,7 @@ public class MyView extends View implements Runnable {
     private Bitmap thanhngang;
     private Bitmap thanhngangsize;
     private Bitmap gameover;
+    private Bitmap win;
 
     private int x1 = 500, y1 = 500, dx1 = 5, dy1 = 5;
     private int x2 = 500, y2 = 500, dx2 = 10, dy2 = 10;
@@ -41,6 +42,7 @@ public class MyView extends View implements Runnable {
         thanhngangsize = Bitmap.createScaledBitmap( thanhngang, 240, 150, false );
 
         gameover = BitmapFactory.decodeResource( getResources(), R.drawable.game_over );
+        win = BitmapFactory.decodeResource( getResources(), R.drawable.youwin );
 
         ball = BitmapFactory.decodeResource( getResources(), R.drawable.ball );
         ballResize = Bitmap.createScaledBitmap( ball, 50, 50, false );
@@ -53,7 +55,7 @@ public class MyView extends View implements Runnable {
             Brick brick3 = new Brick( 110 * i + 50, 160, 105, 70 );
             Brick brick4 = new Brick( 110 * i + 50, 235, 105, 70 );
             Brick brick5 = new Brick( 110 * i + 50, 310, 105, 70 );
-            /*Brick brick6 = new Brick(110 * i + 50, 385, 105, 70);*/
+           /* Brick brick6 = new Brick(110 * i + 50, 385, 105, 70);*/
 
             lists.add( brick );
             lists.add( brick2 );
@@ -135,7 +137,6 @@ public class MyView extends View implements Runnable {
                 /*soundManager.playSound( R.raw.gameover );*/
                 return;
 
-
             }
         }
 
@@ -156,6 +157,13 @@ public class MyView extends View implements Runnable {
                 }
 
             }
+            if (point == 450){
+                canvas.drawText( "YOU WIN ", 360, 360, paint2 );
+                canvas.drawText( "Scores ", 385, 430, paint2 );
+               /* canvas.drawBitmap( win, 220, 600, null );*/
+                return;
+            }
+
         }
 
 
