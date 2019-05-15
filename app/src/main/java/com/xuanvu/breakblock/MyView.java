@@ -145,8 +145,8 @@ public class MyView extends View implements Runnable {
                 //kiểm tra ball va chạm với gạch
                 // viên nào bể thì set visible = false
 
-                if (y2 < element.getY()) {
-                    if (x2 > element.getX() && x2 < (element.getX() + element.getWidth() /*+ element.getHeight()*/)) {
+                if (y2 < element.getY() + element.getHeight()) {
+                    if (x2 > element.getX() && x2 < (element.getX() + element.getWidth())) {
                         element.setInVisible();
                         soundManager.playSound( R.raw.sound1 );
                         point += 10;
